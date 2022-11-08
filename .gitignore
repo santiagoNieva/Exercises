@@ -1,0 +1,10 @@
+*.code-workspace
+*.log
+*.pot
+*.py[cod]
+*$py.class
+__pycache__
+.bak
+.save
+build/
+venv/
