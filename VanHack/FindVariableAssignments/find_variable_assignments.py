@@ -56,6 +56,9 @@ def find_variable_assignments(source, target_var_names):
     source = source.replace("==","")
     # disable multiline
     source = source.replace("\\\n"," ")
+    # disable >= or <=
+    source = source.replace("<="," ")
+    source = source.replace(">="," ")
 
     results = []
     nested_function_level = 0
@@ -97,3 +100,38 @@ def find_variable_assignments(source, target_var_names):
 
             [lookup_dict.pop(word) for word in results if word in lookup_dict.keys()]
     return results
+
+# This part is new.
+if __name__ == "__main__":
+    import sys
+    import builtins
+    description = """
+This command will check your python code and let you know if there is any
+re-declaration of python native functions.
+Just pass all the files you want to check as parameters.
+
+Example:
+python find_variable_assignments file1.py file2.py test/*.py
+
+"""
+    args = sys.argv[1:]
+    if not args or args[0] == "--help":
+        print(description)
+    else:
+        targets = dir(builtins)
+        print("Files to check:\n")
+        for filepath in sys.argv:
+            print(f"--- {filepath}:")
+            try:
+                with open(filepath,'r') as f:
+                    file_as_string = f.read()
+                results = find_variable_assignments(file_as_string,target_var_names=targets)
+            except Exception as e:
+                print("     Unexpected Error: {e}")
+            else:
+                if not results:
+                    print("    - Success! The file has not overwritten builtins functions.")
+                else:
+                    print(f"    - Warning! The file has overwritten the next buitlins functions: {', '.join(results)}")
+                print("\n")
+    

@@ -1,6 +1,6 @@
 # Exercises
 
-This repository is the first step for my Portfolio, I will solve challenges from LeetCode and some other sites like VanHack and Turing. The main purpose of this is training and let the recruiters check out what my code looks like. I will set test cases and I will measure how much optimized it is. Finally I will measure the time it took me to get to the first solution. After that I will take some extra time to make the code readable following best practices.
+This repository is the first step for my Portfolio, I will solve challenges from LeetCode and some other sites like VanHack and Turing. The main purpose of this is training and let the recruiters check out what my code looks like. I will set test cases and I will measure how much optimized it is (#TODO). Finally I will measure the time it took me to get to the first solution. After that I will take some extra time to make the code readable following best practices.
 
 ## About me
 

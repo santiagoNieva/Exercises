@@ -11,7 +11,7 @@ def fn():
     a, b = 1, 2
     print(str, a, b)
 """
-        expected = ["str","bin"]
+        expected = ["str"]
         targets = dir(builtins)
         self.assertCountEqual(
             find_variable_assignments(src, targets), expected)
