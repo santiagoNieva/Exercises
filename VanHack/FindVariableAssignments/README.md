@@ -1,6 +1,6 @@
 # FIND VARIABLE ASSIGNMENTS
 
-This exercise consists on creating a script that will take as input python (3.8) code and detect any dangerous re-definitions of python's native functions.
+This exercise consists on creating a script that will take as input python (3.8) code and detect any dangerous re-definitions of python's builtins functions.
 
 I copy the tests that comes with the challenges and you can add more if you want to.
 
