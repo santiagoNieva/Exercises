@@ -48,8 +48,8 @@ python 1837_sum_of_digit_in_k_base.py 4 8
         try:
             n = int(args[0])
             k = int(args[1])
-            hola = Solution()
-            results = hola.sumBase(n,k)
+            solution = Solution()
+            results = solution.sumBase(n,k)
         except Exception as e:
             print(f"""Exception: {e}
 You should send 2 INTEGERS, number 'n' and base 'k'.

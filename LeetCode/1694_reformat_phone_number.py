@@ -85,8 +85,8 @@ Output: "123-456"
     else:
         try:
             number = args[0]
-            hola = Solution()
-            results = hola.reformatNumber(number)
+            solution = Solution()
+            results = solution.reformatNumber(number)
         except Exception as e:
             print(f"""Exception: {e}
 You should enter a phone nomber as a string with quotes.
