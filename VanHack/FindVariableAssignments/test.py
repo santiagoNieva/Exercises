@@ -68,6 +68,7 @@ def list(str, foo, iter):
         dict = 42 
         foo = zip
         bar = 0
+        f"is this destroyed? {exec('foo=dot')}"
     return str[::-1]
 """
         expected = ["str", "list", "iter", "bin", "set", "dict"]
