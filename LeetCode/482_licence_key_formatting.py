@@ -36,18 +36,28 @@ Constraints:
 
 class Solution:
     def licenseKeyFormatting(self, s: str, k: int) -> str:
+        # Remove the dashes and upper characters
         upper_no_dash = s.replace("-","").upper()
+        # The length will be dynamic because it will be lowered step by step. so let store it in a variable
         length = len(upper_no_dash)
+        # The first group length should be the remainder of the division
         first = length % k
+        # Declaring empty variables. Index will track the position of the string we are after each group separation
         result = []
         index = 0
+        # While string has not consumed
         while length > 0:
+            # if the remainder is 0, that means we can create stable groups of k elements
             if not first:
                 first = k
+            # Append the first group to the results
             result.append(upper_no_dash[index:index+first])
+            # refresh the variables
             index += first
             length -= first
             first = k
+
+        # Use the dash to join the groups in a new string.
         return "-".join(result)
                 
 

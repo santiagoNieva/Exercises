@@ -3,7 +3,7 @@
 This beautiful piece of code I learned it on the internet. but with no comments so, here we go.  
 There is another solution using itertools powerset function, but has no fun.  
 
-The problem consist in based on a number list and a number n lower than len(list)  
+The problem consist in based on a list and a number n <= len(list)  
 returns all the posible subsets of the first n items of the list  
 This is named **POWERSET**  
 ## Example:
