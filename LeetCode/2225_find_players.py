@@ -48,64 +48,34 @@ Constraints:
 
 ---!SECTION TIMING
     Start Time = 28/11/22 11:55
-    End Time = 28/11/22 12:32
+    End Time = 28/11/22 21:19
 
 """
 
 
 class Solution:
     def findWinners(self,matches):
-        winners = [matches[0][0]]
-        losers = [matches[0][1]]
-        deleted = []
-        index_w = 0
-        index_l = 0
-        index_d = 0
-        for winner, loser in matches[1:]:
-            print(f"\Probando set {winner} - {loser}\n\twinners: {winners}")
-            # Winner section
-            if winners:
-                while not winners[index_w] == winner:
-                    print(f"\t\tPrincipio de while:   - index_w:{index_w} -- winner: {winner}")
-                    if winners[index_w] > winner:
-                        print("\t\t\t\tEntra al mayor que >>>>>>>")
-                        if index_w == 0:
-                            if not winners[0] == winner:
-                                winners.insert(0,winner)
-                            break
-                        else:
-                            index_w -= 1
-                            print(f"\t\t\t\t\t\t\t{winners[index_w]}[{index_w}] < {winner}")
-                            if winners[index_w] < winner:
-                                winners.insert(index_w+1,winner)
-                                index_w += 1
-                                break
-                    else:
-                        print("\t\t\t\tEntra al menor que <<<<<<<")
-                        if index_w == len(winners) -1:
-                            if not winners[index_w] == winner:
-                                winners.append(winner)
-                                index_w += 1
-                            break
-                        else:
-                            index_w += 1
-                            if winners[index_w] > winner:
-                                winners.insert(index_w,winner)
-                                break
+        teams = {}
+        for winner, loser in matches:
+            dicto = teams.get(winner,None)
+            if dicto:
+                teams[winner]['wins'] += 1
             else:
-                index_w = 0
-                winners.append(winner)     
-
-            # losers
-            while not losers[index_l] == loser:
-                pass
+                teams[winner] = {'wins':1, 'loses': 0}
+            
+            dicto = teams.get(loser,None)
+            if dicto:
+                teams[loser]['loses'] += 1
             else:
-                del losers[index_l]
-                index_l = index_l -1 if index_l > 0 else 0
-                deleted.append(loser)
+                teams[loser] = {'wins':0, 'loses': 1}
+            
 
-        print(f"\nwinners: {winners}\n\nlosers:{losers}")
+        winners = sorted([x for x,y in teams.items() if y['loses'] == 0])
+        losers = sorted([x for x,y in teams.items() if y['loses'] == 1])
 
+        print(winners)
+        print(losers)
+        return[winners, losers]
 
 if __name__ == '__main__':
     matches = [[1,3],[2,3],[3,6],[5,6],[5,7],[4,5],[4,8],[4,9],[10,4],[10,9]]
